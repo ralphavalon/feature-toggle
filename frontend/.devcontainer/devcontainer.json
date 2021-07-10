@@ -1,0 +1,24 @@
+{
+	"name": "MyProjectFrontend",
+	"dockerComposeFile": ["../../docker-compose-vscode.yml"],
+	"service": "frontend",
+	"workspaceFolder": "/workspace/frontend",
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/bash",
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": true
+		},
+		"[javascript]": {
+			"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+		}
+	},
+	"extensions": [
+		"dbaeumer.vscode-eslint"
+	],
+	"forwardPorts": [
+		3000
+	],
+	"postCreateCommand": "test -f package.json && yarn install",
+	// "postCreateCommand": "yarn install && ./node_modules/.bin/cypress install",
+	"remoteUser": "node"
+}

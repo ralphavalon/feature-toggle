@@ -1,0 +1,20 @@
+{
+	"name": "MyProjectBackend",
+	"dockerComposeFile": ["../../docker-compose-vscode.yml"],
+	"service": "backend",
+	"workspaceFolder": "/workspace/backend",
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/bash",
+		"java.home": "/usr/local/openjdk-15"
+	},
+	"extensions": [
+		"vscjava.vscode-java-pack",
+		"gabrielbb.vscode-lombok",
+		"pivotal.vscode-boot-dev-pack"
+	],
+	"forwardPorts": [
+		8080
+	],
+	"postCreateCommand": "test -f pom.xml && mvn dependency:copy-dependencies",
+	"remoteUser": "vscode"
+}
