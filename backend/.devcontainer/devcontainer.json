@@ -5,7 +5,8 @@
 	"workspaceFolder": "/workspace/backend",
 	"settings": {
 		"terminal.integrated.shell.linux": "/bin/bash",
-		"java.home": "/usr/local/openjdk-15"
+		"java.home": "/usr/local/openjdk-15",
+		"java.trace.server": "verbose"
 	},
 	"extensions": [
 		"vscjava.vscode-java-pack",
@@ -15,6 +16,6 @@
 	"forwardPorts": [
 		8080
 	],
-	"postCreateCommand": "'test -f pom.xml && mvn dependency:copy-dependencies'",
+	"postCreateCommand": "mvn dependency:copy-dependencies",
 	"remoteUser": "vscode"
 }
