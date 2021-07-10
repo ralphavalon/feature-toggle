@@ -18,7 +18,7 @@
 	"forwardPorts": [
 		3000
 	],
-	"postCreateCommand": "test -f package.json && yarn install",
+	"postCreateCommand": "'test -f package.json && yarn install'",
 	// "postCreateCommand": "yarn install && ./node_modules/.bin/cypress install",
 	"remoteUser": "node"
 }
