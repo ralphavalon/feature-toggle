@@ -1,4 +1,4 @@
-# MyProject - Frontend
+# FeatureToggle - Frontend
 
 ## About the project ##
 
@@ -28,10 +28,10 @@
 
 * **Run tests**
 
-`docker build . --target test -t myproject/frontend-tests`
+`docker build . --target test -t feature-toggle/frontend-tests`
 
 * **Run application**
 
-`docker build . -t myproject/frontend && docker run -p 3000:80 myproject/frontend`
+`docker build . -t feature-toggle/frontend && docker run -p 3000:80 feature-toggle/frontend`
 
 Then the application will be available on http://localhost:3000

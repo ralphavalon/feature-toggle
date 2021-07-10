@@ -1,5 +1,5 @@
 {
-	"name": "MyProjectBackend",
+	"name": "FeatureToggleBackend",
 	"dockerComposeFile": ["../../docker-compose-vscode.yml"],
 	"service": "backend",
 	"workspaceFolder": "/workspace/backend",

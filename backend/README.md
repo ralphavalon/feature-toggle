@@ -1,4 +1,4 @@
-# MyProject - Backend
+# FeatureToggle - Backend
 
 ## About the project ##
 
@@ -24,10 +24,10 @@
 
 * **Run tests**
 
-`docker build . --target test -t myproject/backend-tests`
+`docker build . --target test -t feature-toggle/backend-tests`
 
 * **Run application**
 
-`docker build . -t myproject/backend && docker run -p 8080:8080 myproject/backend`
+`docker build . -t feature-toggle/backend && docker run -p 8080:8080 feature-toggle/backend`
 
 Then the application will be available on http://localhost:8080
