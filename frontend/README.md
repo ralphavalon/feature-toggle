@@ -22,6 +22,7 @@
 
 ```
 # .env file example
+REACT_APP_FEATURE_TOGGLE_URL=http://localhost:8080/api/v1/features
 ```
 
 ## How To ##
