@@ -35,6 +35,10 @@ public class Feature {
 
     private boolean active;
 
+    public boolean isActiveForCustomer(Customer customer) {
+        return customers.contains(customer) && active;
+    }
+
     public boolean isExpired() {
         return expiresOn != null && LocalDateTime.now().isAfter(expiresOn);
     }

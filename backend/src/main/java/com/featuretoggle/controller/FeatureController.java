@@ -2,10 +2,10 @@ package com.featuretoggle.controller;
 
 import javax.validation.Valid;
 
-import com.featuretoggle.controller.request.AssociateFeatureToggleRequest;
-import com.featuretoggle.controller.request.CreateFeatureToggleRequest;
 import com.featuretoggle.controller.request.SearchFeatureToggleRequest;
-import com.featuretoggle.controller.response.AssociateFeatureToggleResponse;
+import com.featuretoggle.controller.request.CreateFeatureToggleRequest;
+import com.featuretoggle.controller.request.SearchFeatureRequest;
+import com.featuretoggle.controller.response.SearchFeatureToggleResponse;
 import com.featuretoggle.controller.response.CreateFeatureToggleResponse;
 import com.featuretoggle.controller.response.FeatureToggleResponse;
 import com.featuretoggle.controller.response.FeatureToggleResponseList;
@@ -35,7 +35,7 @@ public class FeatureController {
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
     @ApiOperation(value = "", response = FeatureToggleResponse.class, responseContainer = "List")
-    public FeatureToggleResponseList getFeatures(SearchFeatureToggleRequest request) {
+    public FeatureToggleResponseList getFeatures(SearchFeatureRequest request) {
         if (request.getCustomerIds() != null && request.getCustomerIds().size() > 0) {
             return new FeatureToggleResponseList(featureService.findAllByCustomerIds(request.getCustomerIds()));
         }
@@ -44,10 +44,10 @@ public class FeatureController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.OK)
-    public AssociateFeatureToggleResponse addCustomerToFeatures(
-            @Valid @RequestBody AssociateFeatureToggleRequest request) {
-        return new AssociateFeatureToggleResponse(featureService.associateCustomerToFeatures(
-                request.getFeatureRequest().getCustomerId(), request.getFeatureRequest().getFeatureIds()));
+    public SearchFeatureToggleResponse searchPerCustomer(
+            @Valid @RequestBody SearchFeatureToggleRequest request) {
+        return new SearchFeatureToggleResponse(request.getFeatureRequest().getCustomerId(), featureService.findAllById(
+                request.getFeatureRequest().getFeatureIds()));
     }
 
     @PutMapping

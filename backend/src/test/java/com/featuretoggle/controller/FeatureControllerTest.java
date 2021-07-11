@@ -1,7 +1,6 @@
 package com.featuretoggle.controller;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -62,13 +61,13 @@ public class FeatureControllerTest {
         String request = JsonHelper.loadRequest("add_customer_to_feature");
 
         List<Feature> features = Arrays.asList(
-            FeatureFixture.builderWithId("my-feature-a", Arrays.asList("123"))
+            FeatureFixture.builderWithId("my-feature-a", Arrays.asList("1234"))
             .active(true)
             .inverted(false)
             .expiresOn(LocalDateTime.now().plusDays(1))
             .build(),
 
-            FeatureFixture.builderWithId("my-feature-b", Arrays.asList("123"))
+            FeatureFixture.builderWithId("my-feature-b", Arrays.asList("1234"))
             .active(false)
             .inverted(true)
             .expiresOn(LocalDateTime.now().plusDays(1))
@@ -88,7 +87,7 @@ public class FeatureControllerTest {
         );
         
 
-        when(featureService.associateCustomerToFeatures(anyString(), any(List.class))).thenReturn(features);
+        when(featureService.findAllById(any(List.class))).thenReturn(features);
 
         mvc.perform(post(mainPath)
             .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -96,7 +95,7 @@ public class FeatureControllerTest {
             .andExpect(status().isOk())
             .andExpect(content().json(JsonHelper.loadResponse("add_customer_to_feature")));
 
-        verify(featureService).associateCustomerToFeatures(anyString(), any(List.class));
+        verify(featureService).findAllById(any(List.class));
     }
 
     @Test

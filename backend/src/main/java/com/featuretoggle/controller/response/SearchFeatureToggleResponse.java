@@ -3,18 +3,20 @@ package com.featuretoggle.controller.response;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.featuretoggle.model.Customer;
 import com.featuretoggle.model.Feature;
 
 import lombok.Getter;
 
 @Getter
-public class AssociateFeatureToggleResponse {
+public class SearchFeatureToggleResponse {
 
     private List<FeatureResponse> features;
 
-    public AssociateFeatureToggleResponse(List<Feature> features) {
+    public SearchFeatureToggleResponse(String customerId, List<Feature> features) {
+        Customer customer = Customer.builder().id(customerId).build();
         this.features = new ArrayList<>();
-        features.forEach(f -> this.features.add(new FeatureResponse(f)));
+        features.forEach(f -> this.features.add(new FeatureResponse(f, customer)));
     }
 
     @Getter
@@ -24,7 +26,7 @@ public class AssociateFeatureToggleResponse {
         private boolean inverted;
         private boolean expired;
 
-        public FeatureResponse(Feature feature) {
+        public FeatureResponse(Feature feature, Customer customer) {
             this.name = feature.getTechnicalName();
             this.active = feature.isActive();
             this.inverted = feature.isInverted();
