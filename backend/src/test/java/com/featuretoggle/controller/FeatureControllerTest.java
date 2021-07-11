@@ -1,15 +1,18 @@
 package com.featuretoggle.controller;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -43,15 +46,57 @@ public class FeatureControllerTest {
     public void shouldAddFeature() throws Exception {
         String request = JsonHelper.loadRequest("create_feature");
 
-        when(featureService.save(any(Feature.class))).thenReturn("my-feature-a");
+        when(featureService.saveOrUpdate(any(Feature.class))).thenReturn(FeatureFixture.featureWithId("my-feature-a", Arrays.asList("123")));
+
+        mvc.perform(put(mainPath)
+            .contentType(MediaType.APPLICATION_JSON_VALUE)
+            .content(request))
+            .andExpect(status().isOk())
+            .andExpect(content().json(JsonHelper.loadResponse("create_feature")));
+
+        verify(featureService).saveOrUpdate(any(Feature.class));
+    }
+
+    @Test
+    public void shouldAddCustomerToFeature() throws Exception {
+        String request = JsonHelper.loadRequest("add_customer_to_feature");
+
+        List<Feature> features = Arrays.asList(
+            FeatureFixture.builderWithId("my-feature-a", Arrays.asList("123"))
+            .active(true)
+            .inverted(false)
+            .expiresOn(LocalDateTime.now().plusDays(1))
+            .build(),
+
+            FeatureFixture.builderWithId("my-feature-b", Arrays.asList("123"))
+            .active(false)
+            .inverted(true)
+            .expiresOn(LocalDateTime.now().plusDays(1))
+            .build(),
+
+            FeatureFixture.builderWithId("my-feature-c", Arrays.asList("123"))
+            .active(false)
+            .inverted(false)
+            .expiresOn(LocalDateTime.now().plusDays(1))
+            .build(),
+
+            FeatureFixture.builderWithId("my-feature-d", Arrays.asList("123"))
+            .active(true)
+            .inverted(false)
+            .expiresOn(LocalDateTime.now().minusDays(1))
+            .build()
+        );
+        
+
+        when(featureService.associateCustomerToFeatures(anyString(), any(List.class))).thenReturn(features);
 
         mvc.perform(post(mainPath)
             .contentType(MediaType.APPLICATION_JSON_VALUE)
             .content(request))
-            .andExpect(status().isCreated())
-            .andExpect(content().json(JsonHelper.loadResponse("create_feature")));
+            .andExpect(status().isOk())
+            .andExpect(content().json(JsonHelper.loadResponse("add_customer_to_feature")));
 
-        verify(featureService).save(any(Feature.class));
+        verify(featureService).associateCustomerToFeatures(anyString(), any(List.class));
     }
 
     @Test

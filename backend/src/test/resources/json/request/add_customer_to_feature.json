@@ -1,0 +1,11 @@
+{
+    "featureRequest": {
+      "customerId": "1234",
+      "features": [
+        { "name": "my-feature-a"},
+        { "name": "my-feature-b"},
+        { "name": "my-feature-c"},
+        { "name": "my-feature-d"}
+      ]
+    }
+  }

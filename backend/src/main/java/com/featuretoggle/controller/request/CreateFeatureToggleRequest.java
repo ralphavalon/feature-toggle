@@ -1,16 +1,17 @@
 package com.featuretoggle.controller.request;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.featuretoggle.model.Customer;
 import com.featuretoggle.model.Feature;
-import com.featuretoggle.model.FeaturePerCustomer;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
@@ -19,6 +20,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CreateFeatureToggleRequest {
 
     @NotBlank
@@ -49,8 +51,8 @@ public class CreateFeatureToggleRequest {
             .build();
     }
 
-    private List<Customer> toCustomers() {
-        List<Customer> customers = new ArrayList<>();
+    private Set<Customer> toCustomers() {
+        Set<Customer> customers = new HashSet<>();
         customerIds.forEach(customerId -> {
             customers.add(Customer.builder().id(customerId).build());
         });

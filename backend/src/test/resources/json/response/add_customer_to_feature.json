@@ -1,0 +1,28 @@
+{
+  "features": [
+    {
+      "name": "my-feature-a",
+      "active": true,
+      "inverted": false,
+      "expired": false
+    },
+    {
+      "name": "my-feature-b",
+      "active": false,
+      "inverted": true,
+      "expired": false
+    },
+    {
+      "name": "my-feature-c",
+      "active": false,
+      "inverted": false,
+      "expired": false
+    },
+    {
+      "name": "my-feature-d",
+      "active": true,
+      "inverted": false,
+      "expired": true
+    }
+  ]
+}

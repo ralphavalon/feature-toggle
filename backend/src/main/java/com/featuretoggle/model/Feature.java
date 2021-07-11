@@ -1,8 +1,8 @@
 package com.featuretoggle.model;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -31,7 +31,7 @@ public class Feature {
     private boolean inverted;
 
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    private List<Customer> customers = new ArrayList<>();
+    private Set<Customer> customers = new HashSet<>();
 
     private boolean active;
 

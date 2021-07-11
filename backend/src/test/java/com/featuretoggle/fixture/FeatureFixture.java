@@ -2,8 +2,9 @@ package com.featuretoggle.fixture;
 
 import java.time.LocalDateTime;
 import java.time.Month;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.featuretoggle.model.Customer;
 import com.featuretoggle.model.Feature;
@@ -11,6 +12,10 @@ import com.featuretoggle.model.Feature;
 public class FeatureFixture {
 
     public static Feature featureWithId(String technicalName, List<String> customerIds) {
+        return builderWithId(technicalName, customerIds).build();
+    }
+
+    public static Feature.FeatureBuilder builderWithId(String technicalName, List<String> customerIds) {
         return Feature.builder()
             .id(technicalName)
             .displayName("displayName")
@@ -19,12 +24,11 @@ public class FeatureFixture {
             .description("description")
             .inverted(false)
             .customers(toCustomers(customerIds))
-            .active(true)
-            .build();
+            .active(true);
     }
 
-    private static List<Customer> toCustomers(List<String> customerIds) {
-        List<Customer> customers = new ArrayList<>();
+    private static Set<Customer> toCustomers(List<String> customerIds) {
+        Set<Customer> customers = new HashSet<>();
         customerIds.forEach(customerId -> {
             customers.add(Customer.builder().id(customerId).build());
         });
