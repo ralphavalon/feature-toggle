@@ -12,11 +12,13 @@ const FeatureCardContainer = props => {
 
   const isNew = () => !props.id;
 
-  const createFeature = async feature => {
+  const createOrUpdateFeature = async feature => {
     try{
       const result = await axios.put(`${process.env.REACT_APP_FEATURE_TOGGLE_URL}`, feature);
       feature.id = result.data.id;
-      setFeatures([...features, feature]);
+      if(isNew()) {
+        setFeatures([...features, feature]);
+      }
     } catch (error) {
       setHasError(true);
       console.error(error);
@@ -29,12 +31,13 @@ const FeatureCardContainer = props => {
     event.preventDefault();
 
     const feature = serialize(event.target, { hash: true });
-    if(!Array.isArray(feature.customerIds)) {
+    if(!Array.isArray(feature.customerIds) && feature.customerIds) {
       feature.customerIds = [feature.customerIds];
     }
-    if(isNew()) {
-      await createFeature(feature);
+    if(feature.expiresOn) {
+      feature.expiresOn = feature.expiresOn.replace(/ /g,'');
     }
+    await createOrUpdateFeature(feature);
     if(props.onSubmit) {
       props.onSubmit();
     }

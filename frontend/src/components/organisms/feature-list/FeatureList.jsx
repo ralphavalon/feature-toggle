@@ -18,6 +18,7 @@ const FeatureList = ({ features }) => {
                 displayName={feature.displayName}
                 technicalName={feature.technicalName}
                 description={feature.description}
+                expiresOn={feature.expiresOn}
                 active={feature.active}
                 inverted={feature.inverted}
                 customerIds={feature.customerIds} />
