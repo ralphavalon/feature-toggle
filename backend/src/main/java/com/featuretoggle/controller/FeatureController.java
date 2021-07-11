@@ -10,6 +10,7 @@ import com.featuretoggle.controller.response.CreateFeatureToggleResponse;
 import com.featuretoggle.model.Feature;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/features")
+@CrossOrigin
 public class FeatureController {
 
     private Map<String, Feature> featureToggleMap = new HashMap<>();

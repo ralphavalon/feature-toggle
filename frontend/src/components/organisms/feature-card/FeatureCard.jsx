@@ -6,46 +6,61 @@ import CreatableMulti from './CreatableMulti';
 
 import PropTypes from 'prop-types';
 
-const FeatureCard = ({ id, displayName, description, className }) => {
+const FeatureCard = ({
+  id, isNew, displayName, customerIds,
+  description, technicalName, active,
+  inverted, onSubmit, onCancel
+}) => {
 
-  const [isEditable, setIsEditable] = useState(false);
+  const [formDisplayName, setDisplayName] = useState(displayName);
+  const [formDescription, setDescription] = useState(description);
+  const [isActive, setIsActive] = useState(active);
+  const [isInverted, setIsInverted] = useState(inverted);
+  const [isEditable, setIsEditable] = useState(isNew);
 
   return (
-    <div className="col-sm-4">
-      <div className={`card card-width mb-3 ${className}`}>
-        <div className="card-header">
-          <Row>
-            <Col>{id} - {displayName}</Col>
-            <Col sm={2} xs={2}>
-              <a href="#" role="button" onClick={() => setIsEditable(true)}><PencilSquare /></a>
-              <a href="#" role="button"><XSquare color="red" /></a>
-            </Col>
-          </Row>
-        </div>
+    <div>
+      <div className='card card-width mb-3'>
+        {!isNew &&
+          <div className='card-header'>
+            <Row>
+              <Col>{id}{displayName && `- ${displayName}`}</Col>
+              <Col sm={2} xs={2} className='d-inline-flex'>
+                <a href="javascript:void(0)" role="button" onClick={() => setIsEditable(true)}><PencilSquare /></a>
+                <a href="javascript:void(0)" role="button"><XSquare color="red" /></a>
+              </Col>
+            </Row>
+          </div>
+        }
         <div className="card-body">
-          <Form>
-            {isEditable && (
-              <Form.Group controlId="exampleForm.ControlTextarea1" className="mb-3">
-                <Form.Label>Display Name</Form.Label>
-                <Form.Control type="text" placeholder="Display name" disabled={!isEditable} />
+          <Form onSubmit={onSubmit}>
+            {isNew && (
+              <Form.Group className="mb-3">
+                <Form.Label>Technical Name</Form.Label>
+                <Form.Control type="text" placeholder="Technical name" name="technicalName" value={technicalName} />
               </Form.Group>)}
-            <Form.Group controlId="exampleForm.ControlTextarea1" className="mb-3">
+            {isEditable && (
+              <Form.Group className="mb-3">
+                <Form.Label>Display Name</Form.Label>
+                <Form.Control type="text" placeholder="Display name" name="displayName" disabled={!isEditable} value={formDisplayName} onChange={e => setDisplayName(e.target.value)} />
+              </Form.Group>)}
+            <Form.Group className="mb-3">
               <Form.Label>Description</Form.Label>
-              <Form.Control as="textarea" rows={3} value={description} disabled={!isEditable} />
+              <Form.Control as="textarea" rows={3} value={formDescription} name="description" disabled={!isEditable} onChange={e => setDescription(e.target.value)} />
             </Form.Group>
-            <Form.Group controlId="exampleForm.ControlTextarea1" className="mb-3">
+            <Form.Group className="mb-3">
               <Form.Label>Customers</Form.Label>
-              <CreatableMulti disabled={!isEditable} />
+              <CreatableMulti name="customerIds" disabled={!isEditable} value={customerIds} />
             </Form.Group>
             <Row className="mb-3">
               <Col>
-                <Form.Group controlId="formBasicCheckbox" className="text-start">
-                  <Form.Check type="checkbox" label="Active" disabled={!isEditable} />
+                <Form.Group className="text-start">
+                  <Form.Check type="checkbox" name="active" label="Active" disabled={!isEditable} checked={isActive} value={isActive} onChange={() => setIsActive(!isActive)} />
                 </Form.Group>
               </Col>
               <Col>
-                <Form.Group controlId="formBasicCheckbox" className="text-start">
-                  <Form.Check type="checkbox" label="Inverted" disabled={!isEditable} />
+                <Form.Group className="text-start">
+                  <Form.Check type="checkbox" name="inverted" label="Inverted" disabled={!isEditable} checked={isInverted} value={isInverted} onChange={() => setIsInverted(!isInverted)} />
                 </Form.Group>
               </Col>
             </Row>
@@ -57,7 +72,12 @@ const FeatureCard = ({ id, displayName, description, className }) => {
               </Col>
               {isEditable && (
                 <Col>
-                  <Button variant="outline" type="button" onClick={() => setIsEditable(false)}>
+                  <Button variant="outline" type="button" onClick={() => {
+                    if (!isNew) {
+                      setIsEditable(false);
+                    }
+                    if (onCancel) onCancel();
+                  }}>
                     Cancel
                   </Button>
                 </Col>)}
