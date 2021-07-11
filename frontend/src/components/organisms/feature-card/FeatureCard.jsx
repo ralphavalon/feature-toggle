@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import { PencilSquare, XSquare } from 'react-bootstrap-icons';
+import Datetime from 'react-datetime';
 
 import CreatableMulti from './CreatableMulti';
 import * as Customer from '../../../utils/customer';
@@ -9,7 +10,7 @@ import PropTypes from 'prop-types';
 
 const FeatureCard = ({
   id, isNew, displayName, customerIds,
-  description, technicalName, active,
+  description, technicalName, active, expiresOn,
   inverted, onSubmit, onCancel
 }) => {
 
@@ -40,7 +41,12 @@ const FeatureCard = ({
           </div>
         }
         <div className="card-body">
-          <Form onSubmit={onSubmit}>
+          <Form onSubmit={e => {
+            onSubmit(e);
+            if (!isNew) {
+              setIsEditable(false);
+            }
+          }}>
             {isNew && (
               <Form.Group className="mb-3">
                 <Form.Label>Technical Name</Form.Label>
@@ -50,6 +56,7 @@ const FeatureCard = ({
               <Form.Group className="mb-3">
                 <Form.Label>Display Name</Form.Label>
                 <Form.Control type="text" placeholder="Display name" name="displayName" disabled={!isEditable} value={formDisplayName} onChange={e => setDisplayName(e.target.value)} />
+                <input type="hidden" name="technicalName" value={technicalName} />
               </Form.Group>)}
             <Form.Group className="mb-3">
               <Form.Label>Description</Form.Label>
@@ -58,6 +65,10 @@ const FeatureCard = ({
             <Form.Group className="mb-3">
               <Form.Label>Customers</Form.Label>
               <CreatableMulti name="customerIds" disabled={!isEditable} value={formCustomerIds} onChange={e => setCustomerIds(e)} placeholder="Add customers here..." options={Customer.getCustomerIds()} />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Expires On</Form.Label>
+              <Datetime inputProps={{name: 'expiresOn', disabled: !isEditable }} initialValue={expiresOn} utc={true} dateFormat="YYYY-MM-DDT" timeFormat="HH:mm:ss" />
             </Form.Group>
             <Row className="mb-3">
               <Col>
