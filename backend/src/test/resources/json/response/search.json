@@ -1,0 +1,28 @@
+[
+    {
+        "id": "feature-a",
+        "displayName": "displayName",
+        "technicalName": "feature-a",
+        "expiresOn": "2021-01-30T15:31:00",
+        "description": "description",
+        "inverted": false,
+        "customerIds": [
+            "123",
+            "321"
+        ],
+        "active": true
+    },
+    {
+        "id": "feature-b",
+        "displayName": "displayName",
+        "technicalName": "feature-b",
+        "expiresOn": "2021-01-30T15:31:00",
+        "description": "description",
+        "inverted": false,
+        "customerIds": [
+            "123",
+            "321"
+        ],
+        "active": true
+    }
+]
