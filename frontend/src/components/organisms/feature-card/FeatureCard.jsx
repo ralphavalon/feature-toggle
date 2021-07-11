@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import { PencilSquare, XSquare } from 'react-bootstrap-icons';
 
 import CreatableMulti from './CreatableMulti';
+import * as Customer from '../../../utils/customer';
 
 import PropTypes from 'prop-types';
 
@@ -13,9 +14,15 @@ const FeatureCard = ({
 }) => {
 
   const [formDisplayName, setDisplayName] = useState(displayName);
+  useEffect(() => setDisplayName(displayName), [displayName]);
   const [formDescription, setDescription] = useState(description);
+  useEffect(() => setDescription(description), [description]);
+  const [formCustomerIds, setCustomerIds] = useState(customerIds);
+  useEffect(() => setCustomerIds(customerIds), [customerIds]);
   const [isActive, setIsActive] = useState(active);
+  useEffect(() => setIsActive(active), [active]);
   const [isInverted, setIsInverted] = useState(inverted);
+  useEffect(() => setIsInverted(inverted), [inverted]);
   const [isEditable, setIsEditable] = useState(isNew);
 
   return (
@@ -24,7 +31,7 @@ const FeatureCard = ({
         {!isNew &&
           <div className='card-header'>
             <Row>
-              <Col>{id}{displayName && `- ${displayName}`}</Col>
+              <Col>{id}{displayName && ` - ${displayName}`}</Col>
               <Col sm={2} xs={2} className='d-inline-flex'>
                 <a href="javascript:void(0)" role="button" onClick={() => setIsEditable(true)}><PencilSquare /></a>
                 <a href="javascript:void(0)" role="button"><XSquare color="red" /></a>
@@ -50,7 +57,7 @@ const FeatureCard = ({
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Customers</Form.Label>
-              <CreatableMulti name="customerIds" disabled={!isEditable} value={customerIds} />
+              <CreatableMulti name="customerIds" disabled={!isEditable} value={formCustomerIds} onChange={e => setCustomerIds(e)} placeholder="Add customers here..." options={Customer.getCustomerIds()} />
             </Form.Group>
             <Row className="mb-3">
               <Col>

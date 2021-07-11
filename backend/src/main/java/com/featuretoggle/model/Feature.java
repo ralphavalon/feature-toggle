@@ -36,7 +36,7 @@ public class Feature {
     private boolean active;
 
     public boolean isExpired() {
-        return LocalDateTime.now().isAfter(expiresOn);
+        return expiresOn != null && LocalDateTime.now().isAfter(expiresOn);
     }
 
 }

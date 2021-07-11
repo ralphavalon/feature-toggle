@@ -12,20 +12,6 @@ const FeatureCardContainer = props => {
 
   const isNew = () => !props.id;
 
-  useEffect(async () => {
-    try{
-      // const result = await axios.get(`${process.env.REACT_APP_FEATURE_TOGGLE_URL}`);
-      // const result = await axios.get('http://localhost:8080/api/v1/features');
-      // setFeatures(result.data);
-    } catch (error) {
-      setHasError(true);
-      console.error(error);
-    } finally {
-      setIsLoading(false);
-    }
-
-  }, []);
-
   const createFeature = async feature => {
     try{
       const result = await axios.put(`${process.env.REACT_APP_FEATURE_TOGGLE_URL}`, feature);
@@ -46,7 +32,6 @@ const FeatureCardContainer = props => {
     if(!Array.isArray(feature.customerIds)) {
       feature.customerIds = [feature.customerIds];
     }
-    console.log(feature);
     if(isNew()) {
       await createFeature(feature);
     }
