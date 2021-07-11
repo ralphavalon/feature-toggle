@@ -1,7 +1,7 @@
 # ========================= DEPENDENCY RESOLVER =========================
 # Download the dependencies on container
 # =======================================================================
-FROM maven:3-jdk-15-slim AS dependency_resolver
+FROM maven:3-openjdk-15-slim AS dependency_resolver
 
 # Download all library dependencies
 COPY ./pom.xml /app/pom.xml
@@ -40,7 +40,7 @@ RUN mvn package $MAVEN_CLI_OPTS -Dmaven.test.skip=true
 # ========================= DOCKER IMAGE ================================
 # Prepare container image with application artifacts and runtime environment
 # =======================================================================
-FROM openjdk:15-jre-slim
+FROM openjdk:15-slim
 
 VOLUME /tmp
 

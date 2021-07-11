@@ -18,17 +18,13 @@
 
 | Environment Variable | Description                  | Default Value          |
 |----------------------|------------------------------|------------------------|
-|    |   |   |
+|  REACT_APP_FEATURE_TOGGLE_URL  | Endpoint for feature toggle API  | http://localhost:8080/api/v1/features  |
 
 ```
 # .env file example
 ```
 
 ## How To ##
-
-* **Run tests**
-
-`docker build . --target test -t feature-toggle/frontend-tests`
 
 * **Run application**
 
