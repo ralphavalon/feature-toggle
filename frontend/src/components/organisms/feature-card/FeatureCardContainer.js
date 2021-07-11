@@ -28,7 +28,7 @@ const FeatureCardContainer = props => {
 
   const createFeature = async feature => {
     try{
-      const result = await axios.post(`${process.env.REACT_APP_FEATURE_TOGGLE_URL}`, feature);
+      const result = await axios.put(`${process.env.REACT_APP_FEATURE_TOGGLE_URL}`, feature);
       feature.id = result.data.id;
       setFeatures([...features, feature]);
     } catch (error) {
