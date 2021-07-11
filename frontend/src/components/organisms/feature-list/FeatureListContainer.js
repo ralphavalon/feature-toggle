@@ -12,8 +12,8 @@ const FeatureListContainer = () => {
 
   useEffect(async () => {
     try{
-      const result = { data: [] };
-      // const result = await axios.get(`${process.env.REACT_APP_FEATURE_TOGGLE_URL}`);
+      const result = await axios.get(`${process.env.REACT_APP_FEATURE_TOGGLE_URL}`);
+      setFeatures(result.data);
     } catch (error) {
       setHasError(true);
       console.error(error);
