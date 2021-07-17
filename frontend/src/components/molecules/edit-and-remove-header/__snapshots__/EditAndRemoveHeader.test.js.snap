@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditAndRemoveHeader renders correctly with required props 1`] = `
+<div
+  className="card-header"
+>
+  <Row
+    noGutters={false}
+  >
+    <Col>
+      headerText
+    </Col>
+    <Col
+      sm={2}
+      xs={2}
+    >
+      <a
+        href="javascript:void(0)"
+        onClick={[MockFunction]}
+        role="button"
+      >
+        <ForwardRef
+          color="currentColor"
+          size="1em"
+        />
+      </a>
+      <a
+        href="javascript:void(0)"
+        role="button"
+      >
+        <ForwardRef
+          color="red"
+          size="1em"
+        />
+      </a>
+    </Col>
+  </Row>
+</div>
+`;
+
+exports[`EditAndRemoveHeader renders correctly with required props and optional props 1`] = `
+<div
+  className="card-header"
+>
+  <Row
+    noGutters={false}
+  >
+    <Col>
+      headerText
+    </Col>
+    <Col
+      className="className"
+      sm={2}
+      xs={2}
+    >
+      <a
+        href="javascript:void(0)"
+        onClick={[MockFunction]}
+        role="button"
+      >
+        <ForwardRef
+          color="currentColor"
+          size="1em"
+        />
+      </a>
+      <a
+        href="javascript:void(0)"
+        role="button"
+      >
+        <ForwardRef
+          color="red"
+          size="1em"
+        />
+      </a>
+    </Col>
+  </Row>
+</div>
+`;

@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectMulti renders correctly with required props 1`] = `
+<StateManager
+  defaultInputValue=""
+  defaultMenuIsOpen={false}
+  defaultValue={null}
+  isMulti={true}
+  name="name"
+  onChange={[Function]}
+  options={null}
+  value={null}
+/>
+`;
+
+exports[`SelectMulti renders correctly with required props and optional props 1`] = `
+<StateManager
+  defaultInputValue=""
+  defaultMenuIsOpen={false}
+  defaultValue={null}
+  isDisabled={true}
+  isMulti={true}
+  name="name"
+  onChange={[Function]}
+  options={
+    Array [
+      Object {
+        "label": "123",
+        "value": "123",
+      },
+    ]
+  }
+  placeholder="placeholder"
+  value={
+    Array [
+      Object {
+        "label": "123",
+        "value": "123",
+      },
+    ]
+  }
+/>
+`;

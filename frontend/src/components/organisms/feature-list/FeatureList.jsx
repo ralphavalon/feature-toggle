@@ -11,7 +11,7 @@ const FeatureList = ({ features }) => {
       {
         features.map(feature => {
           return (
-            <Col className="col-sm-5 col-md-3">
+            <Col className="col-sm-5 col-md-3" key={feature.id}>
               <FeatureCard
                 key={feature.id}
                 id={feature.id}

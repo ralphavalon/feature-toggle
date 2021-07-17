@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FeatureCardContainer renders correctly 1`] = `
+<FeatureCardContainer
+  id="id"
+  onSubmit={[MockFunction]}
+/>
+`;

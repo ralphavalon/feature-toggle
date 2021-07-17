@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormSelectField renders correctly with required props 1`] = `
+<FormGroup>
+  <FormLabel
+    column={false}
+    srOnly={false}
+  >
+    Label
+  </FormLabel>
+  <SelectMulti
+    name="field-name"
+    onChange={[Function]}
+  />
+</FormGroup>
+`;
+
+exports[`FormSelectField renders correctly with required props and optional props 1`] = `
+<FormGroup
+  className="className"
+>
+  <FormLabel
+    column={false}
+    srOnly={false}
+  >
+    Label
+  </FormLabel>
+  <SelectMulti
+    disabled={true}
+    name="field-name"
+    onChange={[Function]}
+    options={
+      Array [
+        "option",
+      ]
+    }
+    value={
+      Array [
+        "value",
+      ]
+    }
+  />
+</FormGroup>
+`;

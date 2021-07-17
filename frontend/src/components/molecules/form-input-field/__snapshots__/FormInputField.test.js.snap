@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormInputField renders correctly with required props 1`] = `
+<FormGroup>
+  <FormLabel
+    column={false}
+    srOnly={false}
+  >
+    Label
+  </FormLabel>
+  <FormControl
+    name="field-name"
+    onChange={[Function]}
+    value=""
+  />
+</FormGroup>
+`;
+
+exports[`FormInputField renders correctly with required props and optional props 1`] = `
+<FormGroup
+  className="className"
+>
+  <FormLabel
+    column={false}
+    srOnly={false}
+  >
+    Label
+  </FormLabel>
+  <FormControl
+    as="textarea"
+    disabled={true}
+    name="field-name"
+    onChange={[Function]}
+    rows={3}
+    value="value"
+  />
+</FormGroup>
+`;
+
+exports[`FormInputField should change state when onChange 1`] = `
+<FormGroup>
+  <FormLabel
+    column={false}
+    srOnly={false}
+  >
+    Label
+  </FormLabel>
+  <FormControl
+    name="field-name"
+    onChange={[Function]}
+    value="myValue"
+  />
+</FormGroup>
+`;

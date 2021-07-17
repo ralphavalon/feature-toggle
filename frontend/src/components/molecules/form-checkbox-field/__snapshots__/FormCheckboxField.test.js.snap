@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormCheckboxField renders correctly with required props 1`] = `
+<FormGroup>
+  <FormCheck
+    checked={false}
+    label="Label"
+    name="field-name"
+    onChange={[Function]}
+    type="checkbox"
+  />
+</FormGroup>
+`;
+
+exports[`FormCheckboxField renders correctly with required props and optional props 1`] = `
+<FormGroup
+  className="className"
+>
+  <FormCheck
+    checked={true}
+    disabled={true}
+    label="Label"
+    name="field-name"
+    onChange={[Function]}
+    type="checkbox"
+    value={true}
+  />
+</FormGroup>
+`;
+
+exports[`FormCheckboxField should change state when onChange 1`] = `
+<FormGroup>
+  <FormCheck
+    checked={true}
+    label="Label"
+    name="field-name"
+    onChange={[Function]}
+    type="checkbox"
+    value={true}
+  />
+</FormGroup>
+`;

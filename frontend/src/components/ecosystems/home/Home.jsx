@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
 
@@ -8,7 +7,6 @@ import FeatureList from '../../organisms/feature-list';
 const Home = () => {
 
   const [isNewFeature, setIsNewFeature] = useState(false);
-  const [isAddToFeatureEnabled, setIsAddToFeatureEnabled] = useState(false);
 
   return (
     <div>
@@ -25,10 +23,6 @@ const Home = () => {
       <FeatureList />
     </div>
   );
-};
-
-Home.propTypes = {
-  features: PropTypes.array.isRequired,
 };
 
 export default Home;

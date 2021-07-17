@@ -1,0 +1,382 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FeatureCard renders correctly 1`] = `
+<div>
+  <div
+    className="card card-width mb-3"
+  >
+    <EditAndRemoveHeader
+      className="d-inline-flex"
+      onEdit={[Function]}
+      size={2}
+    />
+    <div
+      className="card-body"
+    >
+      <Form
+        inline={false}
+        onSubmit={[Function]}
+      >
+        <FormInputField
+          disabled={true}
+          inputProps={
+            Object {
+              "rows": 3,
+            }
+          }
+          inputType="textarea"
+          label="Description"
+          name="description"
+        />
+        <FormSelectField
+          className="mb-3"
+          disabled={true}
+          label="Customers"
+          name="customerIds"
+          options={Array []}
+          placeholder="Add customers here..."
+        />
+        <FormGroup
+          className="mb-3"
+        >
+          <FormLabel
+            column={false}
+            srOnly={false}
+          >
+            Expires On
+          </FormLabel>
+          <n
+            className=""
+            closeOnClickOutside={true}
+            closeOnSelect={false}
+            closeOnTab={true}
+            dateFormat="YYYY-MM-DDT"
+            input={true}
+            inputProps={
+              Object {
+                "disabled": true,
+                "name": "expiresOn",
+              }
+            }
+            isValidDate={[Function]}
+            onBeforeNavigate={[Function]}
+            onCalendarClose={[Function]}
+            onCalendarOpen={[Function]}
+            onChange={[Function]}
+            onClose={[Function]}
+            onNavigate={[Function]}
+            onNavigateBack={[Function]}
+            onNavigateForward={[Function]}
+            onOpen={[Function]}
+            strictParsing={true}
+            timeConstraints={Object {}}
+            timeFormat="HH:mm:ss"
+            utc={true}
+          />
+        </FormGroup>
+        <Row
+          className="mb-3"
+          noGutters={false}
+        >
+          <Col>
+            <FormCheckboxField
+              className="text-start"
+              disabled={true}
+              label="Active"
+              name="active"
+            />
+          </Col>
+          <Col>
+            <FormCheckboxField
+              className="text-start"
+              disabled={true}
+              label="Inverted"
+              name="inverted"
+            />
+          </Col>
+        </Row>
+        <Row
+          noGutters={false}
+        >
+          <Col>
+            <Button
+              active={false}
+              disabled={true}
+              type="submit"
+              variant="primary"
+            >
+              Submit
+            </Button>
+          </Col>
+        </Row>
+      </Form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`FeatureCard renders with optional props 1`] = `
+<div>
+  <div
+    className="card card-width mb-3"
+  >
+    <EditAndRemoveHeader
+      className="d-inline-flex"
+      headerText="id - displayName"
+      onEdit={[Function]}
+      size={2}
+    />
+    <div
+      className="card-body"
+    >
+      <Form
+        inline={false}
+        onSubmit={[Function]}
+      >
+        <FormInputField
+          disabled={true}
+          inputProps={
+            Object {
+              "rows": 3,
+            }
+          }
+          inputType="textarea"
+          label="Description"
+          name="description"
+          value="description"
+        />
+        <FormSelectField
+          className="mb-3"
+          disabled={true}
+          label="Customers"
+          name="customerIds"
+          options={Array []}
+          placeholder="Add customers here..."
+          value={
+            Array [
+              "123",
+              "321",
+            ]
+          }
+        />
+        <FormGroup
+          className="mb-3"
+        >
+          <FormLabel
+            column={false}
+            srOnly={false}
+          >
+            Expires On
+          </FormLabel>
+          <n
+            className=""
+            closeOnClickOutside={true}
+            closeOnSelect={false}
+            closeOnTab={true}
+            dateFormat="YYYY-MM-DDT"
+            initialValue="2021-01-30T11:33:44"
+            input={true}
+            inputProps={
+              Object {
+                "disabled": true,
+                "name": "expiresOn",
+              }
+            }
+            isValidDate={[Function]}
+            onBeforeNavigate={[Function]}
+            onCalendarClose={[Function]}
+            onCalendarOpen={[Function]}
+            onChange={[Function]}
+            onClose={[Function]}
+            onNavigate={[Function]}
+            onNavigateBack={[Function]}
+            onNavigateForward={[Function]}
+            onOpen={[Function]}
+            strictParsing={true}
+            timeConstraints={Object {}}
+            timeFormat="HH:mm:ss"
+            utc={true}
+          />
+        </FormGroup>
+        <Row
+          className="mb-3"
+          noGutters={false}
+        >
+          <Col>
+            <FormCheckboxField
+              className="text-start"
+              disabled={true}
+              label="Active"
+              name="active"
+              value={true}
+            />
+          </Col>
+          <Col>
+            <FormCheckboxField
+              className="text-start"
+              disabled={true}
+              label="Inverted"
+              name="inverted"
+              value={true}
+            />
+          </Col>
+        </Row>
+        <Row
+          noGutters={false}
+        >
+          <Col>
+            <Button
+              active={false}
+              disabled={true}
+              type="submit"
+              variant="primary"
+            >
+              Submit
+            </Button>
+          </Col>
+        </Row>
+      </Form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`FeatureCard renders without disabled because is a new feature 1`] = `
+<div>
+  <div
+    className="card card-width mb-3"
+  >
+    <div
+      className="card-body"
+    >
+      <Form
+        inline={false}
+        onSubmit={[Function]}
+      >
+        <FormInputField
+          className="mb-3"
+          inputType="text"
+          label="Technical Name"
+          name="technicalName"
+          placeholder="Technical name"
+        />
+        <FormInputField
+          className="mb-3"
+          disabled={false}
+          inputType="text"
+          label="Display Name"
+          name="displayName"
+          placeholder="Display name"
+        />
+        <input
+          name="technicalName"
+          type="hidden"
+        />
+        <FormInputField
+          disabled={false}
+          inputProps={
+            Object {
+              "rows": 3,
+            }
+          }
+          inputType="textarea"
+          label="Description"
+          name="description"
+        />
+        <FormSelectField
+          className="mb-3"
+          disabled={false}
+          label="Customers"
+          name="customerIds"
+          options={Array []}
+          placeholder="Add customers here..."
+        />
+        <FormGroup
+          className="mb-3"
+        >
+          <FormLabel
+            column={false}
+            srOnly={false}
+          >
+            Expires On
+          </FormLabel>
+          <n
+            className=""
+            closeOnClickOutside={true}
+            closeOnSelect={false}
+            closeOnTab={true}
+            dateFormat="YYYY-MM-DDT"
+            input={true}
+            inputProps={
+              Object {
+                "disabled": false,
+                "name": "expiresOn",
+              }
+            }
+            isValidDate={[Function]}
+            onBeforeNavigate={[Function]}
+            onCalendarClose={[Function]}
+            onCalendarOpen={[Function]}
+            onChange={[Function]}
+            onClose={[Function]}
+            onNavigate={[Function]}
+            onNavigateBack={[Function]}
+            onNavigateForward={[Function]}
+            onOpen={[Function]}
+            strictParsing={true}
+            timeConstraints={Object {}}
+            timeFormat="HH:mm:ss"
+            utc={true}
+          />
+        </FormGroup>
+        <Row
+          className="mb-3"
+          noGutters={false}
+        >
+          <Col>
+            <FormCheckboxField
+              className="text-start"
+              disabled={false}
+              label="Active"
+              name="active"
+            />
+          </Col>
+          <Col>
+            <FormCheckboxField
+              className="text-start"
+              disabled={false}
+              label="Inverted"
+              name="inverted"
+            />
+          </Col>
+        </Row>
+        <Row
+          noGutters={false}
+        >
+          <Col>
+            <Button
+              active={false}
+              disabled={false}
+              type="submit"
+              variant="primary"
+            >
+              Submit
+            </Button>
+          </Col>
+          <Col>
+            <Button
+              active={false}
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+              variant="outline"
+            >
+              Cancel
+            </Button>
+          </Col>
+        </Row>
+      </Form>
+    </div>
+  </div>
+</div>
+`;

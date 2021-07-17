@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Row, Col, Button } from 'react-bootstrap';
-import { PencilSquare, XSquare } from 'react-bootstrap-icons';
 import Datetime from 'react-datetime';
-
-import CreatableMulti from './CreatableMulti';
-import * as Customer from '../../../utils/customer';
-
 import PropTypes from 'prop-types';
+
+import FormInputField from '../../molecules/form-input-field';
+import FormSelectField from '../../molecules/form-select-field';
+import * as Customer from '../../../utils/customer';
+import EditAndRemoveHeader from '../../molecules/edit-and-remove-header';
+import FormCheckboxField from '../../molecules/form-checkbox-field';
 
 const FeatureCard = ({
   id, isNew, displayName, customerIds,
@@ -14,93 +15,59 @@ const FeatureCard = ({
   inverted, onSubmit, onCancel
 }) => {
 
-  const [formDisplayName, setDisplayName] = useState(displayName);
-  useEffect(() => setDisplayName(displayName), [displayName]);
-  const [formDescription, setDescription] = useState(description);
-  useEffect(() => setDescription(description), [description]);
-  const [formCustomerIds, setCustomerIds] = useState(customerIds);
-  useEffect(() => setCustomerIds(customerIds), [customerIds]);
-  const [isActive, setIsActive] = useState(active);
-  useEffect(() => setIsActive(active), [active]);
-  const [isInverted, setIsInverted] = useState(inverted);
-  useEffect(() => setIsInverted(inverted), [inverted]);
   const [isEditable, setIsEditable] = useState(isNew);
+  const disableEditing = () => !isNew && setIsEditable(false);
+  const submitForm = e => {
+    onSubmit(e);
+    disableEditing();
+  };
+  const cancelForm = () => {
+    disableEditing();
+    if (onCancel) onCancel();
+  };
 
   return (
     <div>
       <div className='card card-width mb-3'>
-        {!isNew &&
-          <div className='card-header'>
-            <Row>
-              <Col>{id}{displayName && ` - ${displayName}`}</Col>
-              <Col sm={2} xs={2} className='d-inline-flex'>
-                <a href="javascript:void(0)" role="button" onClick={() => setIsEditable(true)}><PencilSquare /></a>
-                <a href="javascript:void(0)" role="button"><XSquare color="red" /></a>
-              </Col>
-            </Row>
-          </div>
-        }
+        {!isNew && <EditAndRemoveHeader headerText={displayName ? `${id} - ${displayName}` : id}
+          onEdit={() => setIsEditable(true)} size={2} className='d-inline-flex' />}
         <div className="card-body">
-          <Form onSubmit={e => {
-            onSubmit(e);
-            if (!isNew) {
-              setIsEditable(false);
-            }
-          }}>
+          <Form onSubmit={submitForm}>
             {isNew && (
-              <Form.Group className="mb-3">
-                <Form.Label>Technical Name</Form.Label>
-                <Form.Control type="text" placeholder="Technical name" name="technicalName" value={technicalName} />
-              </Form.Group>)}
+              <FormInputField label="Technical Name" inputType="text" value={technicalName} name="technicalName"
+                placeholder="Technical name" className="mb-3" />
+            )}
             {isEditable && (
-              <Form.Group className="mb-3">
-                <Form.Label>Display Name</Form.Label>
-                <Form.Control type="text" placeholder="Display name" name="displayName" disabled={!isEditable} value={formDisplayName} onChange={e => setDisplayName(e.target.value)} />
+              <React.Fragment>
+                <FormInputField label="Display Name" inputType="text" value={displayName} disabled={!isEditable}
+                  name="displayName" placeholder="Display name" className="mb-3" />
                 <input type="hidden" name="technicalName" value={technicalName} />
-              </Form.Group>)}
-            <Form.Group className="mb-3">
-              <Form.Label>Description</Form.Label>
-              <Form.Control as="textarea" rows={3} value={formDescription} name="description" disabled={!isEditable} onChange={e => setDescription(e.target.value)} />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Customers</Form.Label>
-              <CreatableMulti name="customerIds" disabled={!isEditable} value={formCustomerIds} onChange={e => setCustomerIds(e)} placeholder="Add customers here..." options={Customer.getCustomerIds()} />
-            </Form.Group>
+              </React.Fragment>
+            )}
+            <FormInputField label="Description" inputType="textarea" value={description} name="description" disabled={!isEditable} inputProps={{ rows: 3 }} />
+            <FormSelectField label="Customers" name="customerIds" value={customerIds} name="customerIds" className="mb-3"
+              disabled={!isEditable} placeholder="Add customers here..." options={Customer.getCustomerIds()} />
             <Form.Group className="mb-3">
               <Form.Label>Expires On</Form.Label>
-              <Datetime inputProps={{name: 'expiresOn', disabled: !isEditable }} initialValue={expiresOn} utc={true} dateFormat="YYYY-MM-DDT" timeFormat="HH:mm:ss" />
+              <Datetime inputProps={{ name: 'expiresOn', disabled: !isEditable }} initialValue={expiresOn} utc={true} dateFormat="YYYY-MM-DDT" timeFormat="HH:mm:ss" />
             </Form.Group>
             <Row className="mb-3">
               <Col>
-                <Form.Group className="text-start">
-                  <Form.Check type="checkbox" name="active" label="Active" disabled={!isEditable} checked={isActive} value={isActive} onChange={() => setIsActive(!isActive)} />
-                </Form.Group>
+                <FormCheckboxField className="text-start" name="active" label="Active" disabled={!isEditable} value={active} />
               </Col>
               <Col>
-                <Form.Group className="text-start">
-                  <Form.Check type="checkbox" name="inverted" label="Inverted" disabled={!isEditable} checked={isInverted} value={isInverted} onChange={() => setIsInverted(!isInverted)} />
-                </Form.Group>
+                <FormCheckboxField className="text-start" name="inverted" label="Inverted" disabled={!isEditable} value={inverted} />
               </Col>
             </Row>
             <Row>
               <Col>
-                <Button variant="primary" type="submit" disabled={!isEditable}>
-                  Submit
-                </Button>
+                <Button variant="primary" type="submit" disabled={!isEditable}>Submit</Button>
               </Col>
               {isEditable && (
                 <Col>
-                  <Button variant="outline" type="button" onClick={() => {
-                    if (!isNew) {
-                      setIsEditable(false);
-                    }
-                    if (onCancel) onCancel();
-                  }}>
-                    Cancel
-                  </Button>
+                  <Button variant="outline" type="button" onClick={cancelForm}>Cancel</Button>
                 </Col>)}
             </Row>
-
           </Form>
         </div>
       </div>
@@ -109,9 +76,17 @@ const FeatureCard = ({
 };
 
 FeatureCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-  className: PropTypes.string
+  onSubmit: PropTypes.func.isRequired,
+  active: PropTypes.bool,
+  customerIds: PropTypes.array,
+  description: PropTypes.string,
+  displayName: PropTypes.string,
+  expiresOn: PropTypes.string,
+  id: PropTypes.string,
+  inverted: PropTypes.bool,
+  isNew: PropTypes.bool,
+  onCancel: PropTypes.func,
+  technicalName: PropTypes.string,
 };
 
 export default FeatureCard;

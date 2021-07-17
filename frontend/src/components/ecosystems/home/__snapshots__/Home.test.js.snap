@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home renders correctly 1`] = `
+<div>
+  <Row
+    noGutters={false}
+  >
+    <Col
+      className="col-sm-5 col-md-3"
+    >
+      <Button
+        active={false}
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+        variant="primary"
+      >
+        Add new feature
+      </Button>
+    </Col>
+  </Row>
+  <FeatureListContainer />
+</div>
+`;
+
+exports[`Home renders feature card when clicking on Add new feature 1`] = `
+<div>
+  <Row
+    noGutters={false}
+  >
+    <Col
+      className="col-sm-5 col-md-3"
+    >
+      <Button
+        active={false}
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+        variant="primary"
+      >
+        Add new feature
+      </Button>
+      <FeatureCardContainer
+        onCancel={[Function]}
+        onSubmit={[Function]}
+      />
+    </Col>
+  </Row>
+  <FeatureListContainer />
+</div>
+`;
+
+exports[`Home renders without feature card when clicking on Add new feature and then on Cancel 1`] = `
+<div>
+  <Row
+    noGutters={false}
+  >
+    <Col
+      className="col-sm-5 col-md-3"
+    >
+      <Button
+        active={false}
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+        variant="primary"
+      >
+        Add new feature
+      </Button>
+    </Col>
+  </Row>
+  <FeatureListContainer />
+</div>
+`;
+
+exports[`Home renders without feature card when clicking on Add new feature and then on Submit 1`] = `
+<div>
+  <Row
+    noGutters={false}
+  >
+    <Col
+      className="col-sm-5 col-md-3"
+    >
+      <Button
+        active={false}
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+        variant="primary"
+      >
+        Add new feature
+      </Button>
+    </Col>
+  </Row>
+  <FeatureListContainer />
+</div>
+`;
