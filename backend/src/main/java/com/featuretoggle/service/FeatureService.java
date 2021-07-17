@@ -33,4 +33,7 @@ public class FeatureService {
         return featureRepository.findAllById(featureIds);
     }
 
+    public void archiveFeature(String id) {
+        featureRepository.deleteById(id);
+    }
 }

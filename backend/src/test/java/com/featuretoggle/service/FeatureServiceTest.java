@@ -71,7 +71,15 @@ public class FeatureServiceTest {
         assertEquals(2, response.size());
 
         verify(featureRepository).findAllById(featureIds);
-        
+    }
+
+    @Test
+    public void shouldDeleteById() {
+        String id = "feature-a";
+
+        featureService.archiveFeature(id);
+
+        verify(featureRepository).deleteById(id);
     }
     
 }
