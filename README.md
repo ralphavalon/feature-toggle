@@ -26,7 +26,7 @@ Then you need to open `backend` project in container using Remote Development. T
 
 * **Run applications**
 
-* You need to have `.env` file in `frontend/` directory with its variables. Check `frontend/README.md` for more information.
+* You **need to have** `.env` file in `frontend/` directory with its variables. Check `frontend/README.md` for more information.
 
 * After that, you just need to run:
 
@@ -42,17 +42,10 @@ Frontend will be available on: http://localhost:3000
 * From my understanding, I got a bit confused about that example API. If it was a request to add a customer to some features or if it was some sort of search, so I went with the first option and then realized it should be the second one.
 * Since that's a POST to `features` resource, it will be not RESTful, although it will be REST.
 * `technicalName` will be the id.
-* `technicalName` and `customerIds` will be mandatory, according to the document. (`inverted` is as well but it evaluatues to false if it's not given)
+* `technicalName` and `customerIds` will be mandatory, according to the document. (`inverted` is as well but it evaluates to false if it's not given)
+* Archiving a feature gives the idea of logical delete, but in order to ease things up, I used a hard delete.
 
 ### Considerations
 
-I used that approach of not taking more than a day to work on the project, so there were a few things missing:
-
-* No tests for frontend
-* Atomic Design is a bit broken since there's only Organisms and Ecosystems
-* Can't archive a feature
-* Didn't take too much of appearance in consideration
-* No integration tests for backend
-* Error handling could be way better
-
-There would be a lot of things that I could improve with more time but since that was the mentioned approach, I followed the rule. It was a fun challenge.
+* In order to just show the code features, I skipped confirmation of archiving features.
+* It was a fun challenge.

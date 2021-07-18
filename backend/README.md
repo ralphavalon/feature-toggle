@@ -6,19 +6,17 @@
 
 * This project uses:
 
-- 
+- REST
 
 ### Technologies ###
 
 * It mainly uses:
 ```
+Java
+Spring Boot
+Spring Data JPA (currently with H2)
+Swagger
 ```
-
-* It has this environment variable(s):
-
-| Environment Variable | Description                  | Default Value                                            |
-|----------------------|------------------------------|----------------------------------------------------------|
-|         |   |   |
 
 ## How To ##
 

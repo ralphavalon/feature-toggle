@@ -6,12 +6,17 @@
 
 * This project uses:
 
-- 
+- **Atomic Design.** - More info: https://atomicdesign.bradfrost.com/chapter-2/ and https://rangle-io.gitbook.io/react-training/index-1/atomic_component_principles
+- **Container Components.** - More Info: https://css-tricks.com/learning-react-container-components/
 
 ### Technologies ###
 
 * It mainly uses:
 ```
+React
+Bootstrap
+Dotenv - for environment variables
+Jest - for tests
 ```
 
 * It has this environment variable(s) (you need to create a file called `.env` on root directory):
@@ -26,6 +31,10 @@ REACT_APP_FEATURE_TOGGLE_URL=http://localhost:8080/api/v1/features
 ```
 
 ## How To ##
+
+* **Run tests**
+
+`docker build . --target test -t feature-toggle/frontend-tests`
 
 * **Run application**
 
