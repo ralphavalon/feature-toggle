@@ -29,7 +29,7 @@ const FeatureCard = ({
     <div>
       <div className='card card-width mb-3'>
         {!isNew && <EditAndRemoveHeader headerText={displayName ? `${id} - ${displayName}` : id}
-          onEdit={() => setIsEditable(true)} size={2} className='d-inline-flex' />}
+          onEdit={() => setIsEditable(true)} size={3} className='d-flex justify-content-between' />}
         <div className="card-body">
           <Form noValidate onSubmit={submitForm}>
             {isNew && (
@@ -92,6 +92,6 @@ FeatureCard.propTypes = {
 
 FeatureCard.defaultProps = {
   invalid: {}
-}
+};
 
 export default FeatureCard;

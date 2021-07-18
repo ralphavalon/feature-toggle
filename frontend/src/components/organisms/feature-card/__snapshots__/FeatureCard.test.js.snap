@@ -6,9 +6,9 @@ exports[`FeatureCard renders correctly 1`] = `
     className="card card-width mb-3"
   >
     <EditAndRemoveHeader
-      className="d-inline-flex"
+      className="d-flex justify-content-between"
       onEdit={[Function]}
-      size={2}
+      size={3}
     />
     <div
       className="card-body"
@@ -122,10 +122,10 @@ exports[`FeatureCard renders with optional props 1`] = `
     className="card card-width mb-3"
   >
     <EditAndRemoveHeader
-      className="d-inline-flex"
+      className="d-flex justify-content-between"
       headerText="id - displayName"
       onEdit={[Function]}
-      size={2}
+      size={3}
     />
     <div
       className="card-body"

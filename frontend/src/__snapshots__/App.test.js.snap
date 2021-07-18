@@ -4,6 +4,47 @@ exports[`renders learn react link 1`] = `
 <div
   className="App"
 >
-  <Home />
+  <Navbar
+    bg="dark"
+    collapseOnSelect={false}
+    expand={true}
+    variant="dark"
+  >
+    <Container
+      fluid={false}
+    >
+      <NavbarBrand
+        href="#"
+      >
+        Feature Toggle
+      </NavbarBrand>
+      <NavbarToggle
+        label="Toggle navigation"
+      />
+    </Container>
+    <Nav
+      className="me-auto"
+      fill={false}
+      justify={false}
+    >
+      <NavLink
+        as={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          }
+        }
+        disabled={false}
+        href="#"
+      >
+        Home
+      </NavLink>
+    </Nav>
+  </Navbar>
+  <Container
+    fluid={false}
+  >
+    <Home />
+  </Container>
 </div>
 `;

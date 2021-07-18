@@ -40,5 +40,11 @@ exports[`FormSelectField renders correctly with required props and optional prop
       ]
     }
   />
+  <Feedback
+    className="d-block"
+    type="invalid"
+  >
+    invalidMessage
+  </Feedback>
 </FormGroup>
 `;

@@ -3,10 +3,12 @@
 exports[`Home renders correctly 1`] = `
 <div>
   <Row
+    className="justify-content-center my-3"
     noGutters={false}
   >
     <Col
-      className="col-sm-5 col-md-3"
+      md="3"
+      sm="5"
     >
       <Button
         active={false}
@@ -17,6 +19,37 @@ exports[`Home renders correctly 1`] = `
       >
         Add new feature
       </Button>
+      <Modal
+        animation={true}
+        autoFocus={true}
+        backdrop={true}
+        dialogAs={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          }
+        }
+        enforceFocus={true}
+        keyboard={true}
+        onHide={[Function]}
+        restoreFocus={true}
+        show={false}
+      >
+        <ModalHeader
+          closeButton={false}
+          closeLabel="Close"
+        >
+          <ModalTitle>
+            New feature
+          </ModalTitle>
+        </ModalHeader>
+        <ModalBody>
+          <FeatureCardContainer
+            onCancel={[Function]}
+            onSubmit={[Function]}
+          />
+        </ModalBody>
+      </Modal>
     </Col>
   </Row>
   <FeatureListContainer />
@@ -26,10 +59,12 @@ exports[`Home renders correctly 1`] = `
 exports[`Home renders feature card when clicking on Add new feature 1`] = `
 <div>
   <Row
+    className="justify-content-center my-3"
     noGutters={false}
   >
     <Col
-      className="col-sm-5 col-md-3"
+      md="3"
+      sm="5"
     >
       <Button
         active={false}
@@ -40,10 +75,37 @@ exports[`Home renders feature card when clicking on Add new feature 1`] = `
       >
         Add new feature
       </Button>
-      <FeatureCardContainer
-        onCancel={[Function]}
-        onSubmit={[Function]}
-      />
+      <Modal
+        animation={true}
+        autoFocus={true}
+        backdrop={true}
+        dialogAs={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          }
+        }
+        enforceFocus={true}
+        keyboard={true}
+        onHide={[Function]}
+        restoreFocus={true}
+        show={true}
+      >
+        <ModalHeader
+          closeButton={false}
+          closeLabel="Close"
+        >
+          <ModalTitle>
+            New feature
+          </ModalTitle>
+        </ModalHeader>
+        <ModalBody>
+          <FeatureCardContainer
+            onCancel={[Function]}
+            onSubmit={[Function]}
+          />
+        </ModalBody>
+      </Modal>
     </Col>
   </Row>
   <FeatureListContainer />
@@ -53,10 +115,12 @@ exports[`Home renders feature card when clicking on Add new feature 1`] = `
 exports[`Home renders without feature card when clicking on Add new feature and then on Cancel 1`] = `
 <div>
   <Row
+    className="justify-content-center my-3"
     noGutters={false}
   >
     <Col
-      className="col-sm-5 col-md-3"
+      md="3"
+      sm="5"
     >
       <Button
         active={false}
@@ -67,6 +131,37 @@ exports[`Home renders without feature card when clicking on Add new feature and 
       >
         Add new feature
       </Button>
+      <Modal
+        animation={true}
+        autoFocus={true}
+        backdrop={true}
+        dialogAs={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          }
+        }
+        enforceFocus={true}
+        keyboard={true}
+        onHide={[Function]}
+        restoreFocus={true}
+        show={false}
+      >
+        <ModalHeader
+          closeButton={false}
+          closeLabel="Close"
+        >
+          <ModalTitle>
+            New feature
+          </ModalTitle>
+        </ModalHeader>
+        <ModalBody>
+          <FeatureCardContainer
+            onCancel={[Function]}
+            onSubmit={[Function]}
+          />
+        </ModalBody>
+      </Modal>
     </Col>
   </Row>
   <FeatureListContainer />
@@ -76,10 +171,12 @@ exports[`Home renders without feature card when clicking on Add new feature and 
 exports[`Home renders without feature card when clicking on Add new feature and then on Submit 1`] = `
 <div>
   <Row
+    className="justify-content-center my-3"
     noGutters={false}
   >
     <Col
-      className="col-sm-5 col-md-3"
+      md="3"
+      sm="5"
     >
       <Button
         active={false}
@@ -90,6 +187,37 @@ exports[`Home renders without feature card when clicking on Add new feature and 
       >
         Add new feature
       </Button>
+      <Modal
+        animation={true}
+        autoFocus={true}
+        backdrop={true}
+        dialogAs={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          }
+        }
+        enforceFocus={true}
+        keyboard={true}
+        onHide={[Function]}
+        restoreFocus={true}
+        show={false}
+      >
+        <ModalHeader
+          closeButton={false}
+          closeLabel="Close"
+        >
+          <ModalTitle>
+            New feature
+          </ModalTitle>
+        </ModalHeader>
+        <ModalBody>
+          <FeatureCardContainer
+            onCancel={[Function]}
+            onSubmit={[Function]}
+          />
+        </ModalBody>
+      </Modal>
     </Col>
   </Row>
   <FeatureListContainer />
