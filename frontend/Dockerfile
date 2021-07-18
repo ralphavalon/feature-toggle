@@ -5,9 +5,9 @@ RUN yarn install --frozen-lockfile
 COPY . ./
 RUN yarn build
 
-# FROM build-deps as test
-# WORKDIR /usr/src/app
-# RUN yarn test
+FROM build-deps as test
+WORKDIR /usr/src/app
+RUN yarn test
 
 FROM nginx:1.19-alpine
 COPY --from=build-deps /usr/src/app/build /usr/share/nginx/html

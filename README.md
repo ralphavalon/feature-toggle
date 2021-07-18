@@ -22,6 +22,8 @@ Then you need to open `backend` project in container using Remote Development. T
 
 * **Run tests**
 
+`docker build frontend/ --target test -t feature-toggle/frontend-tests`
+
 `docker build backend/ --target test -t feature-toggle/backend-tests`
 
 * **Run applications**

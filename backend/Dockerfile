@@ -13,7 +13,7 @@ RUN mvn dependency:copy-dependencies $MAVEN_CLI_OPTS
 # ========================= TESTER ======================================
 # Run tests on container
 # =======================================================================
-FROM dependency_resolver AS tester
+FROM dependency_resolver AS test
 
 # Create user for tests
 RUN mkdir -p /home/test_user/.m2/repository
