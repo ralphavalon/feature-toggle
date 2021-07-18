@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 
 const FormInputField = ({
   label, name, inputType, className,
-  disabled, value, placeholder, inputProps
+  disabled, value, placeholder, inputProps,
+  invalidMessage
 }) => {
 
   const [fieldValue, setFieldValue] = useState(value);
@@ -17,6 +18,7 @@ const FormInputField = ({
       <Form.Label>{label}</Form.Label>
       <Form.Control placeholder={placeholder} value={fieldValue || ''} name={name} disabled={disabled}
         onChange={e => setFieldValue(e.target.value)} {...formInputProps} />
+      {invalidMessage && <Form.Control.Feedback type="invalid" className="d-block">{invalidMessage}</Form.Control.Feedback>}
     </Form.Group>
   );
 };
@@ -28,6 +30,7 @@ FormInputField.propTypes = {
   disabled: PropTypes.bool,
   inputProps: PropTypes.object,
   inputType: PropTypes.string,
+  invalidMessage: PropTypes.string,
   placeholder: PropTypes.string,
   value: PropTypes.string,
 };

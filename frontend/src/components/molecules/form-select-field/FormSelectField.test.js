@@ -18,7 +18,8 @@ let formSelectFieldOptionalProps = {
   inputProps: { rows: 3 },
   inputType: 'textarea',
   value: ['value'],
-  options: ['option']
+  options: ['option'],
+  invalidMessage: 'invalidMessage'
 };
 
 describe('FormSelectField', () => {

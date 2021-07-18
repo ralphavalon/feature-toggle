@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import Datetime from 'react-datetime';
 import PropTypes from 'prop-types';
@@ -12,14 +12,13 @@ import FormCheckboxField from '../../molecules/form-checkbox-field';
 const FeatureCard = ({
   id, isNew, displayName, customerIds,
   description, technicalName, active, expiresOn,
-  inverted, onSubmit, onCancel
+  inverted, onSubmit, onCancel, invalid
 }) => {
 
   const [isEditable, setIsEditable] = useState(isNew);
   const disableEditing = () => !isNew && setIsEditable(false);
   const submitForm = e => {
-    onSubmit(e);
-    disableEditing();
+    onSubmit(e) && disableEditing();
   };
   const cancelForm = () => {
     disableEditing();
@@ -32,10 +31,10 @@ const FeatureCard = ({
         {!isNew && <EditAndRemoveHeader headerText={displayName ? `${id} - ${displayName}` : id}
           onEdit={() => setIsEditable(true)} size={2} className='d-inline-flex' />}
         <div className="card-body">
-          <Form onSubmit={submitForm}>
+          <Form noValidate onSubmit={submitForm}>
             {isNew && (
               <FormInputField label="Technical Name" inputType="text" value={technicalName} name="technicalName"
-                placeholder="Technical name" className="mb-3" />
+                placeholder="Technical name" className="mb-3" invalidMessage={invalid.technicalName} />
             )}
             {isEditable && (
               <React.Fragment>
@@ -46,7 +45,8 @@ const FeatureCard = ({
             )}
             <FormInputField label="Description" inputType="textarea" value={description} name="description" disabled={!isEditable} inputProps={{ rows: 3 }} />
             <FormSelectField label="Customers" name="customerIds" value={customerIds} name="customerIds" className="mb-3"
-              disabled={!isEditable} placeholder="Add customers here..." options={Customer.getCustomerIds()} />
+              disabled={!isEditable} placeholder="Add customers here..." options={Customer.getCustomerIds()}
+              invalidMessage={invalid.customerIds} />
             <Form.Group className="mb-3">
               <Form.Label>Expires On</Form.Label>
               <Datetime inputProps={{ name: 'expiresOn', disabled: !isEditable }} initialValue={expiresOn} utc={true} dateFormat="YYYY-MM-DDT" timeFormat="HH:mm:ss" />
@@ -77,6 +77,7 @@ const FeatureCard = ({
 
 FeatureCard.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  invalid: PropTypes.object.isRequired,
   active: PropTypes.bool,
   customerIds: PropTypes.array,
   description: PropTypes.string,
@@ -88,5 +89,9 @@ FeatureCard.propTypes = {
   onCancel: PropTypes.func,
   technicalName: PropTypes.string,
 };
+
+FeatureCard.defaultProps = {
+  invalid: {}
+}
 
 export default FeatureCard;

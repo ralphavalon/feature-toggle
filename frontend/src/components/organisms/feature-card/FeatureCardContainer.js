@@ -8,16 +8,30 @@ import { StoreContext } from '../../../utils/store';
 
 const FeatureCardContainer = props => {
   const { features: [features, setFeatures] } = useContext(StoreContext);
+  const [invalid, setInvalid] = useState({});
+  useEffect(() => {}, [invalid]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
 
   const isNew = () => !props.id;
 
+  const isValid = feature => {
+    const invalids = {};
+
+    if(!feature.technicalName) invalids['technicalName'] = 'Must not be empty';
+    if(!feature.customerIds || feature.customerIds.length === 0) invalids['customerIds'] = 'Must not be empty';
+    if(Object.keys(invalids).length > 0) {
+      setInvalid(invalids);
+    } else {
+      setInvalid({});
+    }
+    return Object.keys(invalids).length === 0;
+  };
+
   const createOrUpdateFeature = async feature => {
     try{
       setIsLoading(true);
       const result = await axios.put(`${process.env.REACT_APP_FEATURE_TOGGLE_URL}`, feature);
-      // feature.id = result.data.id;
       if(isNew()) {
         setFeatures([...features, { ...feature, id: result.data.id}]);
       }
@@ -40,16 +54,17 @@ const FeatureCardContainer = props => {
     if(feature.expiresOn) {
       feature.expiresOn = feature.expiresOn.replace(/ /g,'');
     }
+    if(isValid(feature)) {
+      await createOrUpdateFeature(feature);
 
-    await createOrUpdateFeature(feature);
-
-    if(props.onSubmit) {
-      props.onSubmit();
+      if(props.onSubmit) {
+        props.onSubmit();
+      }
     }
   };
 
   return (
-    <FeatureCard {...props} isNew={isNew()} onSubmit={onSubmit}/>
+    <FeatureCard {...props} isNew={isNew()} invalid={invalid} onSubmit={onSubmit}/>
   );
 };
 

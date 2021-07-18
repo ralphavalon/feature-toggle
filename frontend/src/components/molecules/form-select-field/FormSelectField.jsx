@@ -7,7 +7,7 @@ import SelectMulti from '../../atoms/select-multi';
 const FormSelectField = ({
   label, name, className,
   disabled, value, placeholder,
-  options
+  options, invalidMessage
 }) => {
 
   const [fieldValue, setFieldValue] = useState(value);
@@ -16,7 +16,9 @@ const FormSelectField = ({
   return (
     <Form.Group className={className}>
       <Form.Label>{label}</Form.Label>
-      <SelectMulti name={name} disabled={disabled} value={fieldValue} onChange={e => setFieldValue(e)} options={options} placeholder={placeholder} />
+      <SelectMulti name={name} disabled={disabled} value={fieldValue} onChange={e => setFieldValue(e)} options={options}
+        placeholder={placeholder}/>
+      {invalidMessage && <Form.Control.Feedback type="invalid" className="d-block">{invalidMessage}</Form.Control.Feedback>}
     </Form.Group>
   );
 };

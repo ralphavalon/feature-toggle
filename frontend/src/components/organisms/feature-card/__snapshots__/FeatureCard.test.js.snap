@@ -15,6 +15,7 @@ exports[`FeatureCard renders correctly 1`] = `
     >
       <Form
         inline={false}
+        noValidate={true}
         onSubmit={[Function]}
       >
         <FormInputField
@@ -131,6 +132,7 @@ exports[`FeatureCard renders with optional props 1`] = `
     >
       <Form
         inline={false}
+        noValidate={true}
         onSubmit={[Function]}
       >
         <FormInputField
@@ -251,6 +253,7 @@ exports[`FeatureCard renders without disabled because is a new feature 1`] = `
     >
       <Form
         inline={false}
+        noValidate={true}
         onSubmit={[Function]}
       >
         <FormInputField
