@@ -63,8 +63,22 @@ const FeatureCardContainer = props => {
     }
   };
 
+  const onRemove = async id => {
+    try {
+      await axios.delete(`${process.env.REACT_APP_FEATURE_TOGGLE_URL}/${id}`);
+      setFeatures(features.filter(feature => feature.id !== id));
+    } catch (error) {
+      setHasError(true);
+      console.error(error);
+    }
+  };
+
   return (
-    <FeatureCard {...props} isNew={isNew()} invalid={invalid} onSubmit={onSubmit}/>
+    <FeatureCard {...props}
+      isNew={isNew()}
+      invalid={invalid}
+      onRemove={onRemove}
+      onSubmit={onSubmit}/>
   );
 };
 

@@ -12,7 +12,7 @@ import FormCheckboxField from '../../molecules/form-checkbox-field';
 const FeatureCard = ({
   id, isNew, displayName, customerIds,
   description, technicalName, active, expiresOn,
-  inverted, onSubmit, onCancel, invalid
+  inverted, onSubmit, onCancel, invalid, onRemove
 }) => {
 
   const [isEditable, setIsEditable] = useState(isNew);
@@ -29,7 +29,7 @@ const FeatureCard = ({
     <div>
       <div className='card card-width mb-3'>
         {!isNew && <EditAndRemoveHeader headerText={displayName ? `${id} - ${displayName}` : id}
-          onEdit={() => setIsEditable(true)} size={3} className='d-flex justify-content-between' />}
+          onEdit={() => setIsEditable(true)} onRemove={() => onRemove(id)} size={3} className='d-flex justify-content-evenly' />}
         <div className="card-body">
           <Form noValidate onSubmit={submitForm}>
             {isNew && (
@@ -77,6 +77,7 @@ const FeatureCard = ({
 
 FeatureCard.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  onRemove: PropTypes.func.isRequired,
   invalid: PropTypes.object.isRequired,
   active: PropTypes.bool,
   customerIds: PropTypes.array,

@@ -6,8 +6,9 @@ exports[`FeatureCard renders correctly 1`] = `
     className="card card-width mb-3"
   >
     <EditAndRemoveHeader
-      className="d-flex justify-content-between"
+      className="d-flex justify-content-evenly"
       onEdit={[Function]}
+      onRemove={[Function]}
       size={3}
     />
     <div
@@ -122,9 +123,10 @@ exports[`FeatureCard renders with optional props 1`] = `
     className="card card-width mb-3"
   >
     <EditAndRemoveHeader
-      className="d-flex justify-content-between"
+      className="d-flex justify-content-evenly"
       headerText="id - displayName"
       onEdit={[Function]}
+      onRemove={[Function]}
       size={3}
     />
     <div
@@ -150,6 +152,7 @@ exports[`FeatureCard renders with optional props 1`] = `
         <FormSelectField
           className="mb-3"
           disabled={true}
+          invalidMessage="Other Error"
           label="Customers"
           name="customerIds"
           options={Array []}

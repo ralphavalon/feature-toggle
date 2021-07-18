@@ -9,6 +9,7 @@ afterEach(() => {
 
 const editAndRemoveHeaderRequiredProps = {
   onEdit: jest.fn(),
+  onRemove: jest.fn(),
   headerText: 'headerText',
   size: 2
 };

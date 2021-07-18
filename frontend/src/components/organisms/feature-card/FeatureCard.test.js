@@ -19,7 +19,9 @@ afterEach(() => {
 });
 
 const featureCardRequiredProps = {
-  onSubmit: jest.fn()
+  onSubmit: jest.fn(),
+  onRemove: jest.fn(),
+  invalid: {}
 };
 
 let featureCardOptionalProps = {
@@ -33,6 +35,10 @@ let featureCardOptionalProps = {
   isNew: false,
   onCancel: jest.fn(),
   technicalName: 'technicalName',
+  invalid: {
+    technicalName: 'Error',
+    customerIds: 'Other Error',
+  }
 };
 
 describe('FeatureCard', () => {
