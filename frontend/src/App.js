@@ -1,9 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
-import { Container, Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Container, Navbar, Nav } from 'react-bootstrap';
 
 import './App.css';
 import Home from './components/ecosystems/home';
+import ErrorModal from './components/organisms/error-modal';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       </Navbar>
       <Container>
         <Home />
+        <ErrorModal />
       </Container>
     </div>
   );

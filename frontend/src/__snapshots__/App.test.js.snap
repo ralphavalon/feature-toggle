@@ -45,6 +45,7 @@ exports[`renders learn react link 1`] = `
     fluid={false}
   >
     <Home />
+    <ErrorModal />
   </Container>
 </div>
 `;

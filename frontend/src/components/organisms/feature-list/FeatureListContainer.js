@@ -6,8 +6,6 @@ import { StoreContext } from '../../../utils/store';
 
 const FeatureListContainer = () => {
   const { features: [features, setFeatures] } = useContext(StoreContext);
-
-  const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
   useEffect(async () => {
@@ -17,10 +15,7 @@ const FeatureListContainer = () => {
     } catch (error) {
       setHasError(true);
       console.error(error);
-    } finally {
-      setIsLoading(false);
     }
-
   }, []);
 
   return (

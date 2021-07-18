@@ -12,6 +12,11 @@ jest.mock('axios');
 jest.mock('form-serialize');
 jest.mock('../../../utils/customer');
 
+const store = {
+  features: [[], jest.fn()],
+  error: [false, jest.fn()]
+}
+
 const mockGetCustomerIds = value => {
   Customer.getCustomerIds.mockImplementation(() => value);
 }
@@ -68,9 +73,7 @@ const runInAct = async (wrapper) => {
 describe('FeatureCardContainer', () => {
   it('renders correctly', () => {
     let wrapper = shallow(
-      <StoreContext.Provider value={{
-        features: [[], jest.fn()]
-      }}>
+      <StoreContext.Provider value={store}>
         <FeatureCardContainer {...featureCardContainerOptionalProps} />
       </StoreContext.Provider>
     );
@@ -78,9 +81,7 @@ describe('FeatureCardContainer', () => {
     expect(wrapper).toMatchSnapshot();
 
     wrapper = shallow(
-      <StoreContext.Provider value={{
-        features: [[], jest.fn()]
-      }}>
+      <StoreContext.Provider value={store}>
         <FeatureCardContainer {...{...featureCardContainerOptionalProps, id: null }} />
       </StoreContext.Provider>
     );
@@ -105,9 +106,7 @@ describe('FeatureCardContainer', () => {
     serialize.mockImplementation(() => serializeMock);
 
     const wrapper = mount(
-      <StoreContext.Provider value={{
-        features: [[], jest.fn()]
-      }}>
+      <StoreContext.Provider value={store}>
         <FeatureCardContainer {...props} />
       </StoreContext.Provider>
     );

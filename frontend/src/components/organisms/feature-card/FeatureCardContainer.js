@@ -8,10 +8,9 @@ import { StoreContext } from '../../../utils/store';
 
 const FeatureCardContainer = props => {
   const { features: [features, setFeatures] } = useContext(StoreContext);
+  const { error: [hasError, setHasError] } = useContext(StoreContext);
   const [invalid, setInvalid] = useState({});
   useEffect(() => {}, [invalid]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [hasError, setHasError] = useState(false);
 
   const isNew = () => !props.id;
 
@@ -30,7 +29,6 @@ const FeatureCardContainer = props => {
 
   const createOrUpdateFeature = async feature => {
     try{
-      setIsLoading(true);
       const result = await axios.put(`${process.env.REACT_APP_FEATURE_TOGGLE_URL}`, feature);
       if(isNew()) {
         setFeatures([...features, { ...feature, id: result.data.id}]);
@@ -38,8 +36,6 @@ const FeatureCardContainer = props => {
     } catch (error) {
       setHasError(true);
       console.error(error);
-    } finally {
-      setIsLoading(false);
     }
   };
 
