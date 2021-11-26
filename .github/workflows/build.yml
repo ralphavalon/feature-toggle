@@ -43,4 +43,4 @@ jobs:
           -Dsonar.javascript.exclusions=**/__tests__/**,**/*-spec.js,**/*.spec.js,**/*-test.js,**/*.test.js
           -Dsonar.eslint.reportPaths=target/js-eslint/report.json
           -Dsonar.coverage.exclusions=**/__tests__/**,**/*-spec.js,**/*.spec.js,**/*-test.js,**/*.test.js
-          -Dsonar.sources=backend/src/main,frontend/src
+          -Dsonar.sources=src/main,frontend/src
