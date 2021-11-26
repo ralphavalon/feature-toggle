@@ -32,4 +32,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: cd backend && mvn --batch-mode --update-snapshots verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+        run: >
+          cd backend && mvn $MAVEN_CLI_OPTS
+          sonar:sonar
+          -Dsonar.host.url=https://sonarcloud.io
+          -Dsonar.organization=ralphavalon-test
+          -Dsonar.projectKey=ralphavalon_feature-toggle
+          -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml
+          -Dsonar.javascript.lcov.reportPaths=target/js-coverage/lcov.info
+          -Dsonar.javascript.exclusions=**/__tests__/**,**/*-spec.js,**/*.spec.js,**/*-test.js,**/*.test.js
+          -Dsonar.eslint.reportPaths=target/js-eslint/report.json
+          -Dsonar.coverage.exclusions=**/__tests__/**,**/*-spec.js,**/*.spec.js,**/*-test.js,**/*.test.js
+          -Dsonar.sources=backend/src/main,frontend/src
