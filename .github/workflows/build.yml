@@ -38,7 +38,7 @@ jobs:
           -Dsonar.host.url=https://sonarcloud.io
           -Dsonar.organization=ralphavalon-test
           -Dsonar.projectKey=ralphavalon_feature-toggle
-          -Dsonar.projectBaseDir=..
+          -Dsonar.projectBaseDir=./../
           -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml
           -Dsonar.javascript.lcov.reportPaths=target/js-coverage/lcov.info
           -Dsonar.javascript.exclusions=**/__tests__/**,**/*-spec.js,**/*.spec.js,**/*-test.js,**/*.test.js
