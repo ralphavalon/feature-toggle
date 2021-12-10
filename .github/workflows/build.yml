@@ -72,7 +72,6 @@ jobs:
             -Dsonar.organization=ralphavalon-test
             -Dsonar.projectKey=ralphavalon_feature-toggle
             -Dsonar.java.binaries=backend/target
-            -Dsonar.java.libraries=/home/runner/.m2/repository/**/*.jar
             -Dsonar.sources=backend,frontend
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
