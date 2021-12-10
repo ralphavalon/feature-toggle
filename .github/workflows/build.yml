@@ -1,5 +1,8 @@
 name: Build
 on:
+  push:
+    branches:
+      - main
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
@@ -60,6 +63,7 @@ jobs:
 #           -Dsonar.eslint.reportPaths=target/js-eslint/report.json
 #           -Dsonar.coverage.exclusions=**/__tests__/**,**/*-spec.js,**/*.spec.js,**/*-test.js,**/*.test.js
 #           -Dsonar.sources=src/main,../frontend/src
+
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
         with:
