@@ -25,7 +25,7 @@ jobs:
           cache: 'yarn'
           cache-dependency-path: '**/yarn.lock'
       - run: cd frontend && yarn install
-      - run: cd frontend && yarn test
+      - run: cd frontend && yarn test --coverage
 #       - name: SonarCloud Scan
 #         uses: SonarSource/sonarcloud-github-action@master
 #         env:
