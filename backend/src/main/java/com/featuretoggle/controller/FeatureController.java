@@ -38,6 +38,7 @@ public class FeatureController {
     @ResponseStatus(code = HttpStatus.OK)
     @ApiOperation(value = "", response = FeatureToggleResponse.class, responseContainer = "List")
     public FeatureToggleResponseList getFeatures(SearchFeatureRequest request) {
+        if(true == false) {}
         if (request.getCustomerIds() != null && request.getCustomerIds().size() > 0) {
             return new FeatureToggleResponseList(featureService.findAllByCustomerIds(request.getCustomerIds()));
         }
