@@ -43,20 +43,30 @@ jobs:
           dependency:go-offline
           clean verify
 
-      - name: SonarCloud Scan
+#       - name: SonarCloud Scan
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+#           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#         run: >
+#           cd backend && mvn $MAVEN_CLI_OPTS
+#           sonar:sonar
+#           -Dsonar.host.url=https://sonarcloud.io
+#           -Dsonar.organization=ralphavalon-test
+#           -Dsonar.projectKey=ralphavalon_feature-toggle
+#           -Dsonar.sonar.projectBaseDir=/home/runner/work/feature-toggle/feature-toggle/
+#           -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml
+#           -Dsonar.javascript.lcov.reportPaths=target/js-coverage/lcov.info
+#           -Dsonar.javascript.exclusions=**/__tests__/**,**/*-spec.js,**/*.spec.js,**/*-test.js,**/*.test.js
+#           -Dsonar.eslint.reportPaths=target/js-eslint/report.json
+#           -Dsonar.coverage.exclusions=**/__tests__/**,**/*-spec.js,**/*.spec.js,**/*-test.js,**/*.test.js
+#           -Dsonar.sources=src/main,../frontend/src
+      - name: Analyze with SonarCloud
+        uses: sonarsource/sonarcloud-github-action@master
+        with:
+          projectBaseDir: .
+          args: >
+            -Dsonar.organization=ralphavalon-test
+            -Dsonar.projectKey=ralphavalon_feature-toggle
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: >
-          cd backend && mvn $MAVEN_CLI_OPTS
-          sonar:sonar
-          -Dsonar.host.url=https://sonarcloud.io
-          -Dsonar.organization=ralphavalon-test
-          -Dsonar.projectKey=ralphavalon_feature-toggle
-          -Dsonar.sonar.projectBaseDir=/home/runner/work/feature-toggle/feature-toggle/
-          -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml
-          -Dsonar.javascript.lcov.reportPaths=target/js-coverage/lcov.info
-          -Dsonar.javascript.exclusions=**/__tests__/**,**/*-spec.js,**/*.spec.js,**/*-test.js,**/*.test.js
-          -Dsonar.eslint.reportPaths=target/js-eslint/report.json
-          -Dsonar.coverage.exclusions=**/__tests__/**,**/*-spec.js,**/*.spec.js,**/*-test.js,**/*.test.js
-          -Dsonar.sources=src/main,../frontend/src
